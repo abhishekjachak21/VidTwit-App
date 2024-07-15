@@ -9,7 +9,7 @@ function Channel() {
     const { username } = useParams();
 
     const channel = useSelector((state) => state.user?.profileData);
-    // console.log(channel.coverImage);
+    // console.log(channel.coverImagee);
     useEffect(() => {
         dispatch(userChannelProfile(username));
     }, [dispatch, username]);
