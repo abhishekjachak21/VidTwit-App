@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Input2, Button } from ".";
+import { Input2, Button } from "../components";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUserDetails } from "../store/Slices/authSlice";

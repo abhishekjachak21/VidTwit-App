@@ -3,7 +3,6 @@ import React from "react";
 function LoginSkeleton() {
     const loadingSkeletonStyle =
         "animate-pulse bg-slate-500 h-10 w-full rounded mb-2";
-    
     return (
         <>
             <div className="flex justify-center mt-20 w-full">

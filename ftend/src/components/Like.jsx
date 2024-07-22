@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { BiSolidLike, BiSolidDislike } from "./icons";
+import { BiSolidLike, BiSolidDislike } from "../components/icons";
 import {
     toggleCommentLike,
     toggleTweetLike,

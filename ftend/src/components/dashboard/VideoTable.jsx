@@ -1,5 +1,5 @@
 import React from "react";
-import { ImBin, GrEdit } from "../icons";
+import { ImBin, GrEdit } from "../../components/icons";
 import TogglePublish from "../TogglePublish";
 
 function VideoTable({ videos, setPopUp, setVideoDetails }) {

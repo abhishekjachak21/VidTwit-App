@@ -4,7 +4,7 @@ import {
     RxAvatar,
     FaRegEye,
     FaRegHeart,
-} from "../icons";
+} from "../../components/icons";
 
 function StatsSection({ dashboard }) {
     return (
