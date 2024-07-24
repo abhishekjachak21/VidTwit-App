@@ -45,7 +45,8 @@ const deleteFromCloudinary = async(publicId, resource_type = "image") => {
       })
     } catch (error) {
       return error
-      console.log("Error while deleting file on cloudinary", error);
+      conso
+le.log("Error while deleting file on cloudinary", error);
     }
   
   }

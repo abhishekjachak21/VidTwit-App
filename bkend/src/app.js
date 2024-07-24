@@ -5,8 +5,8 @@ import cookieParser from "cookie-parser"
 const app = express()
 
 app.use(cors({
-    // origin: process.env.CORS_ORIGIN,
-    origin: 'https://vidtwit.vercel.app',
+    origin: process.env.CORS_ORIGIN,
+    // origin: 'https://vidtwit.vercel.app',
     credentials: true
 }))
 
