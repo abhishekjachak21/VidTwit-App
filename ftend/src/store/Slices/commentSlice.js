@@ -67,7 +67,7 @@ export const getVideoComments = createAsyncThunk(
         if (page) url.searchParams.set("page", page);
         if (limit) url.searchParams.set("limit", limit);
 
-        try {
+        try{
             const response = await axiosInstance.get(url);
             return response.data.data;
         } catch (error) {
