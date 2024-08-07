@@ -48,7 +48,7 @@ function App() {
                         path="/search/:query"
                         element={
                             <AuthLayout authentication={false}>
-                                <SearchVideos />
+                                 <SearchVideos />
                             </AuthLayout>
                         }
                     />
