@@ -13,28 +13,36 @@ cloudinary.config({
 
 // this process may result in too many errors or requires reuploading therefore use "try-catch" and also this process may take time so use "async-await"...
 const uploadOnCloudinary = async (localFilePath) => {
-    try {
-        if(!localFilePath)return null
-        // upload the file on cloudinary
-        const response = await cloudinary.uploader.upload(localFilePath,{
-            resource_type: "auto"
-        })
-        // file has beeen uploaded successfully  
-        // console.log("file is uploaded on cloudinary",response.url);
-        fs.unlinkSync(localFilePath)
-        return response
+  try {
+      if (!localFilePath) return null;
 
+      // Upload the file to Cloudinary
+      const response = await cloudinary.uploader.upload(localFilePath, {
+          resource_type: "auto"
+      });
 
-    // we know that if file fails to upload on cloudinary, it will still remain on server. So for safe cleaning purpose we must "unlink" that file from our server in catch part because it might be malicious or corrupted files...
+      // Delete the local file after successful upload
+      if (fs.existsSync(localFilePath)) {
+          fs.unlinkSync(localFilePath);
+      } else {
+          console.warn(`File not found: ${localFilePath}`);
+      }
 
-    } catch (error) {
-        // here we us "Sync" because this must be executed then only we must procced for further operations..
+      return response;
+  } catch (error) {
+      console.error("Error uploading to Cloudinary:", error);
 
-        fs.unlinkSync(localFilePath) //removes the locally saved temporary file as the upload operation got failed
+      // Cleanup in case of error
+      if (fs.existsSync(localFilePath)) {
+          fs.unlinkSync(localFilePath);
+      } else {
+          console.warn(`File not found for cleanup: ${localFilePath}`);
+      }
 
-        return null;
-    }
-}
+      return null;
+  }
+};
+
 
 const deleteFromCloudinary = async(publicId, resource_type = "image") => {
     try {
@@ -45,8 +53,7 @@ const deleteFromCloudinary = async(publicId, resource_type = "image") => {
       })
     } catch (error) {
       return error
-      conso
-le.log("Error while deleting file on cloudinary", error);
+      console.log("Error while deleting file on cloudinary", error);
     }
   
   }
